@@ -1,0 +1,32 @@
+name: MAIN Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  run-tests:
+    uses: kiranvattikuti146/VS-TEST-REUSABLE/.github/workflows/VStest-reusable.yml@main
+    with:
+      runsOn: "self-hosted"
+      dotnet-version: "7.0.x"
+      test-assembly: " **\\*UnitTests.dll"
+      code-coverage-enabled: true
+      configuration: "Release"
+      platform: "x64"
+      test-run-title: "Unit Tests"
+      run-in-parallel: true
+      testPlan: "Plan1"
+      testSuite: "SuiteA"
+      testConfiguration: "Release"
+      tcmTestRun: "1234"
+      uiTests: false
+      vsTestVersion: "latest"
+      vstestLocation: "C:Program FilesMicrosoft Visual Studio2022EnterpriseCommon7IDEExtensionsTestPlatformvstest.console.exe"
+      diagnosticsEnabled: true
+      rerunFailedTests: true
+      rerunType: "specific"
+      rerunMaxAttempts: "3"
+      dontDistribute: false
